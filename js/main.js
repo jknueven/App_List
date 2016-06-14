@@ -9,13 +9,30 @@ $("body").on('click','.check', function(){
 	var unClick = $(this).parent().find('p').text();
 
 	todo.forEach(function(todo,index){
-		if(todo.content === unClick)
+		if(todo.content === unClick && todo.active === false)
 		{
 			todo.active = true;
+		}
+		else if(todo.content === unClick && todo.active === true)
+		{
+			todo.active = false;
 		}
 	});
 	writeTodos();
 });
+
+$("body").on('click','.delete', function(){
+
+	var Delete = $(this).parent().find('p').text();	
+
+	todo.forEach(function(todo,index){
+		if (todo.content === Delete)
+		{
+			todo.splice(index,1);
+		}
+	});
+	writeTodos();
+})
 
 var todo = [];
 
