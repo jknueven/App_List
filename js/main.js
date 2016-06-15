@@ -23,10 +23,10 @@ $("body").on('click','.check', function(){
 
 $("body").on('click','.delete', function(){
 
-	var Delete = $(this).parent().find('p').text();	
+	var content = $(this).parent().find('p').text();	
 
-	todo.forEach(function(todo,index){
-		if (todo.content === Delete)
+	todo.forEach(function(aToDo,index){
+		if ( content === aToDo.content)
 		{
 			todo.splice(index,1);
 		}
