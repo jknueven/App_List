@@ -42,6 +42,7 @@ $('form').on('submit',function(event){
 	var newTodo = new toDoItem(content,false);
   	todo.push(newTodo);
   	writeTodos();
+  	$(".new-todo").val("");
 })
 
 $('.show-all').on('click', function(){
