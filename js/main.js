@@ -44,6 +44,26 @@ $('form').on('submit',function(event){
   	writeTodos();
 })
 
+$('.show-all').on('click', function(){
+	writeTodos();
+	buttonActive(this);
+});
+
+$('.show-active').on('click',function(){
+	writeActiveTodos();
+	buttonActive(this);
+});
+
+$('.show-completed').on('click', function(){
+	writeCompleteTodos();
+	buttonActive(this);
+});
+
+
+function buttonActive(button){
+	$('nav button').removeClass('active');
+	$(button).addClass('active');
+}
 
 function writeTodos()
 {
@@ -58,6 +78,31 @@ function writeTodos()
   	else{
   		items.append("<li><article class='completed'><button class='check'></button><p class='complete'>"+todo.content+"</p><input type='text' class='edit-todo' value='learn css'><button class='delete'>X</button></article></li>");
   	}
+  });
+}
+
+function writeActiveTodos()
+{
+  var items = $(".items");
+  items.html("");
+  todo.forEach(function(todo)
+  {
+  	if(todo.active === false)
+  	{
+  		items.append("<li><article><button class='check'></button><p>"+todo.content+"</p><input type='text' class='edit-todo' value='learn html'><button class='delete'>X</button></article></li>");
+  	}
+  });
+}
+
+function writeCompleteTodos()
+{
+  var items = $(".items");
+  items.html("");
+  todo.forEach(function(todo)
+  {
+  	if(todo.active === true)
+  	{
+		items.append("<li><article class='completed'><button class='check'></button><p class='complete'>"+todo.content+"</p><input type='text' class='edit-todo' value='learn css'><button class='delete'>X</button></article></li>");  	}
   });
 }
 
